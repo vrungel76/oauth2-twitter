@@ -57,4 +57,15 @@ class TwitterTest extends \PHPUnit_Framework_TestCase
         $uri = parse_url($url);
         $this->assertEquals('/oauth/authorize', $uri['path']);
     }
+
+    /**
+     * @link https://dev.twitter.com/oauth/reference/post/oauth/access_token
+     */
+    public function testGetBaseAccessTokenUrl()
+    {
+        $params = [];
+        $url = $this->provider->getBaseAccessTokenUrl($params);
+        $uri = parse_url($url);
+        $this->assertEquals('/oauth/access_token', $uri['path']);
+    }
 }
