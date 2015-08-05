@@ -44,7 +44,7 @@ class Twitter extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return $this->apiDomain.'/oauth/authenticate';
+        return $this->apiDomain.'/oauth/authorize';
     }
 
     /**
