@@ -68,4 +68,19 @@ class TwitterTest extends \PHPUnit_Framework_TestCase
         $uri = parse_url($url);
         $this->assertEquals('/oauth/access_token', $uri['path']);
     }
+
+    public function testGetAccessToken()
+    {
+        $response = m::mock('Psr\Http\Message\ResponseInterface');
+        $response->shouldReceive('getBody')->andReturn('{"access_token":"mock_access_token", "scope":"", "token_type":"bearer"}');
+        $response->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
+        $client = m::mock('GuzzleHttp\ClientInterface');
+        $client->shouldReceive('send')->times(1)->andReturn($response);
+        $this->provider->setHttpClient($client);
+        $token = $this->provider->getAccessToken('authorization_code', ['code' => 'mock_authorization_code']);
+        $this->assertEquals('mock_access_token', $token->getToken());
+        $this->assertNull($token->getExpires());
+        $this->assertNull($token->getRefreshToken());
+        $this->assertNull($token->getResourceOwnerId());
+    }
 }
