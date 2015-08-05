@@ -83,4 +83,12 @@ class TwitterTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($token->getRefreshToken());
         $this->assertNull($token->getResourceOwnerId());
     }
+
+    /**
+     * @link https://api.twitter.com/1.1/account/verify_credentials.json
+     */
+    public function testGetUsername()
+    {
+        // TODO: Test verification of credentials.
+    }
 }

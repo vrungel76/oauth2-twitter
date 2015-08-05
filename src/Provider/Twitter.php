@@ -68,8 +68,7 @@ class Twitter extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        throw new \Exception("Not Yet Implemented");
-        return "";
+        return $this->apiDomain.'/account/verify_credentials';
     }
 
     /**
