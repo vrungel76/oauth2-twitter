@@ -47,4 +47,14 @@ class TwitterTest extends \PHPUnit_Framework_TestCase
         $url = $this->provider->getAuthorizationUrl($options);
         $this->assertContains(urlencode(implode(',', $options['scope'])), $url);
     }
+
+    /**
+     * @link https://dev.twitter.com/oauth/reference/get/oauth/authorize
+     */
+    public function testGetAuthorizationUrl()
+    {
+        $url = $this->provider->getAuthorizationUrl();
+        $uri = parse_url($url);
+        $this->assertEquals('/oauth/authorize', $uri['path']);
+    }
 }
