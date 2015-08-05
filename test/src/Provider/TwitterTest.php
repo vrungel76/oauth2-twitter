@@ -40,4 +40,11 @@ class TwitterTest extends \PHPUnit_Framework_TestCase
 		$this->assertArrayHasKey('approval_prompt', $query);
 		$this->assertNotNull($this->provider->getState());
 	}
+
+    public function testScopes()
+    {
+        $options = ['scope' => [uniqid(),uniqid()]];
+        $url = $this->provider->getAuthorizationUrl($options);
+        $this->assertContains(urlencode(implode(',', $options['scope'])), $url);
+    }
 }
