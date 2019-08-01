@@ -1,4 +1,6 @@
-<?php namespace League\OAuth2\Client\Provider;
+<?php
+
+namespace League\OAuth2\Client\Provider;
 
 /**
  * @property array $response
@@ -68,7 +70,7 @@ class TwitterResourceOwner extends GenericResourceOwner
      *
      * @param  string $domain
      *
-     * @return ResourceOwner
+     * @return TwitterResourceOwner
      */
     public function setDomain($domain)
     {

@@ -87,7 +87,6 @@ class Twitter extends AbstractProvider
     /**
      * Check a provider response for errors.
      *
-     * @throws IdentityProviderException
      * @param  ResponseInterface $response
      * @param  string $data Parsed response data
      * @return void
@@ -102,7 +101,7 @@ class Twitter extends AbstractProvider
      *
      * @param array $response
      * @param AccessToken $token
-     * @return League\OAuth2\Client\Provider\ResourceOwnerInterface
+     * @return ResourceOwnerInterface
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
